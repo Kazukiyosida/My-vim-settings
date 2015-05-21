@@ -1,11 +1,11 @@
-" vim‹N“®‚Ì‚İruntimepath‚Éneobundle.vim‚ğ’Ç‰Á
+" vimèµ·å‹•æ™‚ã®ã¿runtimepathã«neobundle.vimã‚’è¿½åŠ 
 if has('vim_starting')
   set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-" neobundle.vim‚Ì‰Šú‰» 
-" NeoBundle‚ğXV‚·‚é‚½‚ß‚Ìİ’è
+" neobundle.vimã®åˆæœŸåŒ– 
+" NeoBundleã‚’æ›´æ–°ã™ã‚‹ãŸã‚ã®è¨­å®š
 call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -27,15 +27,17 @@ NeoBundle 'honza/snipmate-snippets'
 
 call neobundle#end()
 
-" “Ç‚İ‚Şƒvƒ‰ƒOƒCƒ“‚ğ‹LÚ
-" “Ç‚İ‚ñ‚¾ƒvƒ‰ƒOƒCƒ“‚àŠÜ‚ßAƒtƒ@ƒCƒ‹ƒ^ƒCƒv‚ÌŒŸoAƒtƒ@ƒCƒ‹ƒ^ƒCƒv•Êƒvƒ‰ƒOƒCƒ“/ƒCƒ“ƒfƒ“ƒg‚ğ—LŒø‰»‚·‚é
+" èª­ã¿è¾¼ã‚€ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’è¨˜è¼‰
+" èª­ã¿è¾¼ã‚“ã ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚‚å«ã‚ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—ã®æ¤œå‡ºã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚¿ã‚¤ãƒ—åˆ¥ãƒ—ãƒ©ã‚°ã‚¤ãƒ³/ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’æœ‰åŠ¹åŒ–
 filetype plugin indent on
 
-" ƒCƒ“ƒXƒg[ƒ‹‚Ìƒ`ƒFƒbƒN
+" ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã®ãƒã‚§ãƒƒã‚¯
 NeoBundleCheck
+
+" PROCESSINGå®Ÿè¡Œç”¨ã®è¨­å®š(runpde.BATãŒå¿…è¦)
 let g:quickrun_config = {}
 let g:quickrun_config.processing =  {
-      \     'command': 'runpde',
+      \     'command': 'runpde.BAT',
       \     'exec': '%c %s ' ,
       \   }
 
@@ -61,7 +63,7 @@ endif
 
 set number
 set mouse=a
-set fileencodings=utf-8
+set fileencoding=utf-8
 set fileformat=unix
 set list
 set autoindent
@@ -71,6 +73,8 @@ set softtabstop=4
 set shiftwidth=4
 set clipboard+=unnamed
 set clipboard=unnamed
+set nobackup
+set noswapfile
 set cursorline
 nnoremap ;  :
 nnoremap :  ;
