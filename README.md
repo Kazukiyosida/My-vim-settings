@@ -6,3 +6,4 @@
 
 ・runpde.BATについて
   PROCESSINGの.pdeファイルをコンパイルし、C:\libraly\processingに出力、実行するもの。processing-java.exeにパスが通ってないと失敗します。
+;Quickrunで実行されます。
