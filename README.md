@@ -2,8 +2,10 @@
 
 ・Windowsでプラグインのインストール、実行に失敗するとき
 
-  ユーザーディレクトリが非ANCII文字なのが原因なので、Usersディレクトリ以下にユーザーディレクトリへのシンボリックリンクをANCII文字で作成し、setコマンドで%HOMEPATH%をこちらに変更して実行すればエラーを回避できる。
+  非ANCII文字のUserフォルダをANCII文字のシンボリックリンクで張り替えることで対応していましたが、今回から.vimフォルダをCドライブ直下に置き、vim.exeがあるフォルダのvimrcに
+	let $HOME = "C:/VIM/"
+を追記することで解決しています。
 
 ・runpde.BATについて
-  PROCESSINGの.pdeファイルをコンパイルし、C:\libraly\processingに出力、実行するもの。processing-java.exeにパスが通ってないと失敗します。
-;Quickrunで実行されます。
+  PROCESSINGの.pdeファイルをコンパイルし、C:\libraly\processingに出力、実行するものです。processing-java.exeにパスが通ってないと失敗します。
+:Quickrunで実行されます。
