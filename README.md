@@ -1,4 +1,6 @@
-自分用Vimの設定ファイル
+# VIM
+
+Vimの設定ファイル
 
 ・Windowsでプラグインのインストール、実行に失敗するとき
 
@@ -9,3 +11,10 @@
 ・runpde.BATについて
   PROCESSINGの.pdeファイルをコンパイルし、C:\libraly\processingに出力、実行するものです。processing-java.exeにパスが通ってないと失敗します。
 :Quickrunで実行されます。
+
+# Emacs
+
+Emacsの設定ファイル
+
+　こちらはUbuntu用なので特に制限なし
+inits/00-init.elのmy-packegeリストにpackage名を追加すれば自動インストールされます。

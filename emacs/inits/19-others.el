@@ -1,6 +1,6 @@
 ;; カーソル位置記憶
-(setq-default save-place t)
 (require 'saveplace)
+(setq-default save-place t)
 
 ;; 十字ハイライト
 (require 'crosshairs)
