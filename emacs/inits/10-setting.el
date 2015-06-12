@@ -1,3 +1,14 @@
+;; GNU Emacs非表示
+(setq inhibit-startup-screen t)
+;; タブキー
+(setq tab-width 4)
+;; タイトルバーにファイル名を表示する
+;; (setq frame-title-format (format "%%f" (system-name)))
+(setq frame-title-format '("[%b] - Emacs "))
+;; 行の先頭でC-kを一回押すだけで行全体を消去する
+(setq kill-whole-line t)
+;; 現在の関数名をウィンドウ上部に表示する。
+(which-function-mode 1)
 ;; 括弧のハイライト
 (show-paren-mode 1)
 (defvar show-paren-style 'mixed)
@@ -14,6 +25,8 @@
 (setq message-log-max 10000)
 ;; 履歴を永続化
 (savehist-mode 1)
+;; ibufferを使う
+(global-set-key "\C-x\C-b" 'ibuffer)
 ;; ミニバッファを再帰的に呼び出すのを許可
 (setq enable-recursive-minibuffers t)
 ;; ダイアログボックスを使わない
@@ -31,6 +44,9 @@
     (add-to-history minibuffer-history-variable (minibuffer-contents))))
 ;; yesをyに、noをnに
 (defalias 'yes-or-no-p 'y-or-n-p)
+;; ファイルを開くときわかりやすく
+(ido-mode 1)
+(defvar ido-everywhere 1)
 ;; backup の保存先設定
 (setq backup-directory-alist
       (cons (cons ".*" (expand-file-name "~/.emacs.d/backup"))

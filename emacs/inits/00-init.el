@@ -21,6 +21,14 @@
     crosshairs
 
     volatile-highlights
+
+    swap-buffers
+
+    auto-complete
+
+    yasnippet
+
+    auto-complete-c-headers
     
     ))
 
@@ -29,3 +37,4 @@
   (unless (require package nil t)
     (package-refresh-contents)
     (package-install package)))
+
