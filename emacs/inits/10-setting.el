@@ -1,19 +1,47 @@
 ;; GNU Emacs非表示
 (setq inhibit-startup-screen t)
+
+;; fullscreen(daemonで起動すると不発する)
+;(set-frame-parameter nil 'fullscreen 'fullboth)
+; for window system
+; (if window-system 
+;     (progn
+;       (set-frame-parameter nil 'alpha 95)))
+;; font
+; (create-fontset-from-ascii-font
+;        "Source Han Code JP-14:weight=normal:slant=normal"
+;        nil "codekakugo")
+; (set-fontset-font "fontset-codekakugo"
+;                         'unicode
+;                         (font-spec :family "Source Han Code JP" :size 16) 
+;                         nil 
+;                         'append)
+; (add-to-list 'default-frame-alist '(font . "fontset-codekakugo"))
+
+;; theme
+(setq custom-theme-directory "~/.emacs.d/themes/")
+(load-theme 'desert t)
+(enable-theme 'desert)
 ;; タブキー
-(setq tab-width 4)
+(setq tab-width 8)
 ;; タイトルバーにファイル名を表示する
-;; (setq frame-title-format (format "%%f" (system-name)))
 (setq frame-title-format '("[%b] - Emacs "))
+;; avoid "Symbolic link to SVN-controlled source file; follow link? (y or n)"
+(setq vc-follow-symlinks t)
 ;; 行の先頭でC-kを一回押すだけで行全体を消去する
 (setq kill-whole-line t)
 ;; 現在の関数名をウィンドウ上部に表示する。
-(which-function-mode 1)
+;; (which-function-mode 1)
+;; (delete (assoc 'which-func-mode mode-line-format) mode-line-format)
+;; (setq-default header-line-format '(which-func-mode ("" which-func-format)))
+;; モードラインの改行文字の表示
+(setq eol-mnemonic-dos "(DOS)")
+(setq eol-mnemonic-unix "(Unix)")
+(setq eol-mnemonic-mac "(Mac)")
+(setq eol-mnemonic-undecided "(N/A)")  
 ;; 括弧のハイライト
 (show-paren-mode 1)
 (defvar show-paren-style 'mixed)
-;; 時刻表示
-(display-time)
 ;; 行、列番号表示
 (line-number-mode 1)
 (column-number-mode 1)
@@ -47,7 +75,15 @@
 ;; ファイルを開くときわかりやすく
 (ido-mode 1)
 (defvar ido-everywhere 1)
+;; #!に実行権をつける
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+;; ehellの設定
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
 ;; backup の保存先設定
+;; (add-to-list 'backup-directory-alist
+;;              (cons (expand-file-name "~/") (expand-file-name "~/.Trash/")))
 (setq backup-directory-alist
       (cons (cons ".*" (expand-file-name "~/.emacs.d/backup"))
 	    backup-directory-alist))

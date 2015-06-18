@@ -40,6 +40,9 @@
 (setq ac-auto-start 2)
 ;; 0.05秒後に補完開始
 (setq ac-delay 0.05)
+;; 補完時に大文字小文字を区別しない
+(setq completion-ignore-case t)
+(setq read-file-name-completion-ignore-case t)
 ;; 曖昧補完
 (setq ac-use-fuzzy t)
 ;; 補完推測

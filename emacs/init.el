@@ -6,6 +6,7 @@
 (add-to-list 'package-archives ' ("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+
 ;; init-loader
 (require 'init-loader)
 (init-loader-load "~/.emacs.d/inits")
@@ -19,7 +20,4 @@
          ;; (init-loader-error-log (error-message-string e)) ；削除
          (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
          )))))
-
-	    
-
 

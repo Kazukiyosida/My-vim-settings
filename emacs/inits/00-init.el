@@ -29,6 +29,44 @@
     yasnippet
 
     auto-complete-c-headers
+
+    migemo
+
+    electric-spacing
+
+    quickrun
+
+    win-switch
+
+    ddskk
+
+    bury-successful-compilation
+
+    open-junk-file
+
+    anything
+
+    anything-exuberant-ctags
+
+    anything-git-files
+
+    anything-git-grep
+
+    anything-milkode
+
+    anything-project
+
+    anything-replace-string
+
+    anything-sage
+
+    anything-prosjekt
+
+    elscreen
+
+    elscreen-persist
+
+    imenu-list
     
     ))
 
