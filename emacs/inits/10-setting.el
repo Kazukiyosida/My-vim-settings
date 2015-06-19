@@ -64,8 +64,8 @@
 (setq history-length 1000)
 ;; キー入力を素早く表示
 (setq echo-keystrokes 0.1)
-;; 25MB以上のファイルを開いた時に警告
-(setq large-file-warning-threshold (* 25 1024 1024))
+;; 50MB以上のファイルを開いた時に警告
+(setq large-file-warning-threshold (* 50 1024 1024))
 ;; ミニバッファで入力を取り消しても履歴が残るように
 (defadvice abort-recursive-edit (before minibuffer-save activate)
   (when (eq (selected-window) (active-minibuffer-window))

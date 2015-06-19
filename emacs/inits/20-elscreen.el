@@ -16,10 +16,10 @@
 (setq elscreen-buffer-to-nickname-alist
       '(("^dired-mode$" .
          (lambda ()
-           (format "Dired(%s)" dired-directory)))
+           (format "Dir(%s)" dired-directory)))
         ("^Info-mode$" .
          (lambda ()
-           (format "Info(%s)" (file-name-nondirectory Info-current-file))))
+           (format "Inf(%s)" (file-name-nondirectory Info-current-file))))
         ("^mew-draft-mode$" .
          (lambda ()
            (format "Mew(%s)" (buffer-name (current-buffer)))))

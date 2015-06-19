@@ -26,6 +26,114 @@
               " "
               filename-and-process)))
 
+;; Dired
+(require 'dired)
+;; wdied
+(eval-after-load "dired"
+  '(lambda ()
+     (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)))
+;; Dired file-unzip
+(eval-after-load "dired-aux"
+    '(progn
+     (require 'cl)
+   '(add-to-list 'dired-compress-file-suffixes 
+                 '("\\.zip\\'" ".zip" "unzip"))))
+;; Dired file-zip
+(eval-after-load "dired"
+  '(define-key dired-mode-map "z" 'dired-zip-files))
+(defun dired-zip-files (zip-file)
+  "Create an archive containing the marked files."
+  (interactive "sEnter name of zip file: ")
+  ;; create the zip file
+  (let ((zip-file (if (string-match ".zip$" zip-file) zip-file (concat zip-file ".zip"))))
+    (shell-command 
+     (concat "zip " 
+             zip-file
+             " "
+             (concat-string-list 
+              (mapcar
+              #'(lambda (filename)
+                  (file-name-nondirectory filename))
+               (dired-get-marked-files))))))
+
+  (revert-buffer)
+
+  ;; remove the mark on all the files  "*" to " "
+  ;; (dired-change-marks 42 ?\040)
+  ;; mark zip file
+  ;; (dired-mark-files-regexp (filename-to-regexp zip-file))
+  )
+
+(defun concat-string-list (list) 
+   "Return a string which is a concatenation of all elements of the list separated by spaces" 
+   (mapconcat #'(lambda (obj) (format "%s" obj)) list " "))
+
+;; diredでマークをつけたファイルを開く
+(eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map (kbd "F") 'my-dired-find-marked-files)
+     (defun my-dired-find-marked-files (&optional arg)
+       "Open each of the marked files, or the file under the point, or when prefix arg, the next N files "
+       (interactive "P")
+       (let* ((fn-list (dired-get-marked-files nil arg)))
+         (mapc 'find-file fn-list)))))
+
+;; diredでマークをつけたファイルをviewモードで開く
+(eval-after-load "dired"
+  '(progn
+     (define-key dired-mode-map (kbd "V") 'my-dired-view-marked-files)
+     (defun my-dired-view-marked-files (&optional arg)
+       "Open each of the marked files, or the file under the point, or when prefix arg, the next N files "
+       (interactive "P")
+       (let* ((fn-list (dired-get-marked-files nil arg)))
+         (mapc 'view-file fn-list)))))
+;; dired filter
+(require 'dired-filter)
+;; dired subtree
+(require 'dired-subtree)
+;;; iを置き換え
+(define-key dired-mode-map (kbd "i") 'dired-subtree-insert)
+;;; org-modeのようにTABで折り畳む
+(define-key dired-mode-map (kbd "<tab>") 'dired-subtree-remove)
+;;; C-x n nでsubtreeにナローイング
+(define-key dired-mode-map (kbd "C-x n n") 'dired-subtree-narrow)
+;; diredを2つのウィンドウで開いている時に、デフォルトの移動orコピー先をもう一方のdiredで開いているディレクトリにする
+(setq dired-dwim-target t)
+;; ディレクトリを再帰的にコピーする
+(setq dired-recursive-copies 'always)
+;; diredバッファでC-sした時にファイル名だけにマッチするように
+(setq dired-isearch-filenames t)
+;;; ファイル名以外の情報を(と)で隠したり表示したり
+(require 'dired-details)
+(dired-details-install)
+(setq dired-details-hidden-string "")
+(setq dired-details-hide-link-targets nil)
+(setq dired-details-initially-hide nil)
+
+;;; dired-subtreeをdired-detailsに対応させる
+(defun dired-subtree-after-insert-hook--dired-details ()
+  (dired-details-delete-overlays)
+  (dired-details-activate))
+(add-hook 'dired-subtree-after-insert-hook
+          'dired-subtree-after-insert-hook--dired-details)
+
+;; find-dired対応
+(defadvice find-dired-sentinel (after dired-details (proc state) activate)
+  (ignore-errors
+    (with-current-buffer (process-buffer proc)
+      (dired-details-activate))))
+;; (progn (ad-disable-advice 'find-dired-sentinel 'after 'dired-details) (ad-update 'find-dired-sentinel))
+
+;;; [2014-12-30 Tue]^をdired-subtreeに対応させる
+(defun dired-subtree-up-dwim (&optional arg)
+  "subtreeの親ディレクトリに移動。そうでなければ親ディレクトリを開く(^の挙動)。"
+  (interactive "p")
+  (or (dired-subtree-up arg)
+      (dired-up-directory)))
+(define-key dired-mode-map (kbd "^") 'dired-subtree-up-dwim)
+
+
+
 ;; swap-buffers
 (require 'swap-buffers)
 (defun swap-buffers-keep-focus ()

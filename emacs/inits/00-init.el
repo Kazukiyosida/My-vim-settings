@@ -67,6 +67,16 @@
     elscreen-persist
 
     imenu-list
+
+    dired-filter
+
+    dired-subtree
+
+    dired-details
+
+    git-gutter
+
+    magit
     
     ))
 
