@@ -28,10 +28,9 @@
 
 ;; Dired
 (require 'dired)
-;; wdied
+;; wdired
 (eval-after-load "dired"
-  '(lambda ()
-     (define-key dired-mode-map "r" 'wdired-change-to-wdired-mode)))
+  '(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode))
 ;; Dired file-unzip
 (eval-after-load "dired-aux"
     '(progn
@@ -124,7 +123,7 @@
       (dired-details-activate))))
 ;; (progn (ad-disable-advice 'find-dired-sentinel 'after 'dired-details) (ad-update 'find-dired-sentinel))
 
-;;; [2014-12-30 Tue]^をdired-subtreeに対応させる
+;;; ^をdired-subtreeに対応させる
 (defun dired-subtree-up-dwim (&optional arg)
   "subtreeの親ディレクトリに移動。そうでなければ親ディレクトリを開く(^の挙動)。"
   (interactive "p")
@@ -132,7 +131,9 @@
       (dired-up-directory)))
 (define-key dired-mode-map (kbd "^") 'dired-subtree-up-dwim)
 
-
+;; image-dired
+(require 'image-dired+)
+(image-diredx-async-mode 1)
 
 ;; swap-buffers
 (require 'swap-buffers)
@@ -162,3 +163,13 @@
 ;; If you're using CVS or Subversion or git
 (auto-save-buffers-enhanced-include-only-checkout-path t) 
 (auto-save-buffers-enhanced t)
+
+;; 消さないバッファの設定
+(require 'unkillable-scratch)
+;; バッファリストの最後尾に回される
+(setq unkillable-scratch-behavior 'bury)
+;; 保護対象のバッファの正規表現リスト
+(setq unkillable-buffers
+      '("^\\*scratch\\*$" "^\\*daemon\\*$"))
+(unkillable-scratch 1)
+

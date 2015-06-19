@@ -78,6 +78,14 @@
 
     magit
     
+    image+
+
+    image-dired
+
+    emms
+
+    unkillable-scratch
+    
     ))
 
 ;; パッケージ確認、ない場合インストール

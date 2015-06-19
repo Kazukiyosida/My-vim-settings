@@ -33,3 +33,18 @@
   (define-key imenu-list-major-mode-map (kbd "j") 'next-line)
   (define-key imenu-list-major-mode-map (kbd "k") 'previous-line))
 (setq imenu-list-size 0.15)
+
+;; image+
+(require 'image+)
+(imagex-auto-adjust-mode 1)
+(imagex-global-sticky-mode 1)
+;; C-c + / C-c -	拡大、縮小
+;; C-c M-l / C-c M-r	画像の回転
+;; C-c M-o	元画像の表示
+
+;; emms
+(require 'emms-setup)
+(emms-standard)
+(emms-default-players)
+
+
