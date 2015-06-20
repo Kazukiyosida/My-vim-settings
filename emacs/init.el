@@ -3,7 +3,7 @@
 ;; package maneger
 (require 'package)
 (add-to-list 'package-archives ' ("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives ' ("marmalade" . "http://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives ' ("marmalade" . "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
 
@@ -20,4 +20,5 @@
          ;; (init-loader-error-log (error-message-string e)) ；削除
          (init-loader-error-log (format "%s. %s" (locate-library el) (error-message-string e))) ;追加
          )))))
+
 

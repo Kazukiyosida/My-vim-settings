@@ -33,7 +33,9 @@
         ("-telnet" . "telnet")
         ("dict" . "OnlineDict")
         ("*WL:Message*" . "Wanderlust")))
-
+;; elscreenごとにバッファを分ける
+(require 'elscreen-separate-buffer-list)
+(elscreen-separate-buffer-list-mode 1)
 ;; C-z C-c  新しいelscreenを作る
 ;; C-z C-k  現在のelscreenを削除する
 ;; C-z M-k  現在のelscreenをバッファごと削除する

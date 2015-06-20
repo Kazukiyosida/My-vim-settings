@@ -42,6 +42,9 @@
 ;; 括弧のハイライト
 (show-paren-mode 1)
 (defvar show-paren-style 'mixed)
+;; 時刻表示
+;; (defvar display-time-24hr-format t)
+;; (display-time-mode t)
 ;; 行、列番号表示
 (line-number-mode 1)
 (column-number-mode 1)
@@ -54,7 +57,9 @@
 ;; 履歴を永続化
 (savehist-mode 1)
 ;; ibufferを使う
+(require 'ibuffer)
 (global-set-key "\C-x\C-b" 'ibuffer)
+(add-hook 'ibuffer-mode-hook (ibuffer-auto-mode 1))
 ;; ミニバッファを再帰的に呼び出すのを許可
 (setq enable-recursive-minibuffers t)
 ;; ダイアログボックスを使わない
@@ -75,6 +80,7 @@
 ;; ファイルを開くときわかりやすく
 (ido-mode 1)
 (defvar ido-everywhere 1)
+(defvar ido-enable-flex-matching t)
 ;; #!に実行権をつける
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)

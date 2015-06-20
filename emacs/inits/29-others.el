@@ -26,13 +26,41 @@
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
 
+(require 'multi-eshell)
+(require 'shell-history)
+
+;; ido拡張
+(require 'smex)
+(smex-initialize)
+(setq ido-enable-flex-matching t)       ;あいまいマッチ
+(setq ido-max-window-height 1.0)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(defvar org-completion-use-ido t)
+(defvar magit-completing-read-function 'magit-ido-completing-read)
+(defvar ido-ubiquitous-mode 1)
+;; 候補選択を縦に
+(require 'ido-vertical-mode)
+;; ido-anywhere
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+(setq ido-enable-flex-matching t)       ;あいまいマッチ
+(global-set-key (kbd "C-.") 'ido-imenu-anywhere)
+
+(defvar flx-ido-mode 1)
+;; disable ido faces to see flx highlights.
+(setq ido-enable-flex-matching t)
+
 ;; imenu-list
 (require 'imenu-list)
 (global-set-key (kbd "C-'") #'imenu-list-minor-mode)
 (with-eval-after-load "imenu-list"
   (define-key imenu-list-major-mode-map (kbd "j") 'next-line)
   (define-key imenu-list-major-mode-map (kbd "k") 'previous-line))
-(setq imenu-list-size 0.15)
+(setq imenu-list-size 0.25)
 
 ;; image+
 (require 'image+)
@@ -46,5 +74,3 @@
 (require 'emms-setup)
 (emms-standard)
 (emms-default-players)
-
-

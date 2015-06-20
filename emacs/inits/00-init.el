@@ -85,6 +85,30 @@
     emms
 
     unkillable-scratch
+
+    undo-tree
+
+    undohist
+
+    idomenu
+
+    smex
+
+    ido-vertical-mode
+
+    ido-ubiquitous
+
+    elscreen-separate-buffer-list
+
+    point-undo
+
+    goto-chg
+
+    yatemplate
+
+    color-moccur
+
+    multi-eshell
     
     ))
 
