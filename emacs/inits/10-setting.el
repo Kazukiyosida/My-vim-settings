@@ -7,7 +7,8 @@
 ; (if window-system 
 ;     (progn
 ;       (set-frame-parameter nil 'alpha 95)))
-;; font
+
+;; font (よく分かんないので使わない)
 ; (create-fontset-from-ascii-font
 ;        "Source Han Code JP-14:weight=normal:slant=normal"
 ;        nil "codekakugo")
@@ -58,8 +59,7 @@
 (savehist-mode 1)
 ;; ibufferを使う
 (require 'ibuffer)
-(global-set-key "\C-x\C-b" 'ibuffer)
-(add-hook 'ibuffer-mode-hook (ibuffer-auto-mode 1))
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; ミニバッファを再帰的に呼び出すのを許可
 (setq enable-recursive-minibuffers t)
 ;; ダイアログボックスを使わない
@@ -78,20 +78,15 @@
 ;; yesをyに、noをnに
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; ファイルを開くときわかりやすく
+(require 'ido)
 (ido-mode 1)
-(defvar ido-everywhere 1)
-(defvar ido-enable-flex-matching t)
+(setq ido-everywhere 1)
+(setq ido-enable-flex-matching t)
 ;; #!に実行権をつける
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
-;; ehellの設定
+;; shellの設定
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'comint-output-filter-functions 'comint-watch-for-password-prompt)
-;; backup の保存先設定
-;; (add-to-list 'backup-directory-alist
-;;              (cons (expand-file-name "~/") (expand-file-name "~/.Trash/")))
-(setq backup-directory-alist
-      (cons (cons ".*" (expand-file-name "~/.emacs.d/backup"))
-	    backup-directory-alist))
-(setq auto-save-file-name-transforms
-        `((".*", (expand-file-name "~/.emacs.d/backup/") t)))
+;; ビープ音を消す
+(setq ring-bell-function 'ignore)

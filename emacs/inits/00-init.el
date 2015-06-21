@@ -109,6 +109,14 @@
     color-moccur
 
     multi-eshell
+
+    keychord
+
+    shell-history
+
+    yatex
+
+    pdf-tools
     
     ))
 

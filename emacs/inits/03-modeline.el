@@ -26,5 +26,4 @@
 (setcar (cdr (assq 'undo-tree-mode minor-mode-alist)) " UTr")
 (setcar (cdr (assq 'git-gutter-mode minor-mode-alist)) " Gg")
 (setcar (cdr (assq 'flymake-mode minor-mode-alist)) " Flym")
-(add-hook 'emacs-lisp-mode-hook '(lambda () (setq mode-name "Elisp")))
-
+;; (add-hook 'emacs-lisp-mode-hook '(lambda () (setq mode-name "Elisp")))
