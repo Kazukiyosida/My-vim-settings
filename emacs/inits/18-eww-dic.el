@@ -52,7 +52,7 @@
   (interactive (list
                 (region-or-read-string "Nicopedia: ")))
   (eww-browse-url (format "http://dic.nicovideo.jp/a/%s"
-                      (upcase (url-hexify-string str)))))
+			  (upcase (url-hexify-string str)))))
 
 (defun help-me-rubikitch-san (package)
   (interactive "sPackageName: ")

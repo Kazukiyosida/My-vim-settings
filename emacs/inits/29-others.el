@@ -28,6 +28,11 @@
 
 (require 'multi-eshell)
 (require 'shell-history)
+(require 'loccur)
+
+(require 'shut-up)
+(when noninteractive
+  (shut-up-silence-emacs))
 
 ;; ido拡張
 (require 'smex)
@@ -42,6 +47,9 @@
 (defvar org-completion-use-ido t)
 (defvar magit-completing-read-function 'magit-ido-completing-read)
 (defvar ido-ubiquitous-mode 1)
+;;; skk使いはC-jをskk-modeにする
+(when (fboundp 'skk-mode)
+  (fset 'ido-select-text 'skk-mode))
 ;; 候補選択を縦に
 (require 'ido-vertical-mode)
 ;; ido-anywhere
@@ -74,3 +82,21 @@
 (require 'emms-setup)
 (emms-standard)
 (emms-default-players)
+
+(require 'igrep)
+;; lgrep -Ou8でutf8出力
+(igrep-define lgrep (lgrep-use-zgrep nil)(igrep-regex-option "-n -Ou8"))
+(igrep-find-define lgrep (igrep-use-zgrep nil)(igrep-regex-option "-n -Ou8"))
+
+;; grep-a-lot
+(require 'grep-a-lot)
+(grep-a-lot-setup-keys)
+(grep-a-lot-advise igrep)
+
+(require 'wgrep)
+;;; eでwgrepモードにする
+(setf wgrep-enable-key "e")
+;;; wgrep終了時にバッファを保存
+(setq wgrep-auto-save-buffer t)
+;;; read-only bufferにも変更を適用する
+(setq wgrep-change-readonly-file t)

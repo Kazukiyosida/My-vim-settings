@@ -6,7 +6,6 @@
 (defvar auto-async-byte-comlile-exclude-files-regexp "/junk/")
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
-
 ;; インストールするパッケージのリスト
 (defvar my-packages
   '(
@@ -110,13 +109,21 @@
 
     multi-eshell
 
-    keychord
+    key-chord
 
     shell-history
 
     yatex
 
     pdf-tools
+
+    grep-a-lot
+
+    igrep
+
+    wgrep
+
+    loccur
     
     ))
 
@@ -125,4 +132,3 @@
   (unless (require package nil t)
     (package-refresh-contents)
     (package-install package)))
-

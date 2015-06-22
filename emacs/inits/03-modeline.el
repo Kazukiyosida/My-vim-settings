@@ -17,13 +17,13 @@
                 mode-line-process
                 minor-mode-alist
                 "%n" ")%] "
-                (which-func-mode ("" which-func-format " "))
-                "")
+                (which-func-mode (" " which-func-format " "))
+                " ")
               )
 (setq mode-line-frame-identification " ")
 ;; モード名を短くする
 (setcar (cdr (assq 'abbrev-mode minor-mode-alist)) " Abb")
 (setcar (cdr (assq 'undo-tree-mode minor-mode-alist)) " UTr")
 (setcar (cdr (assq 'git-gutter-mode minor-mode-alist)) " Gg")
-(setcar (cdr (assq 'flymake-mode minor-mode-alist)) " Flym")
+;; (setcar (cdr (assq 'flymake-mode minor-mode-alist)) " Flym")
 ;; (add-hook 'emacs-lisp-mode-hook '(lambda () (setq mode-name "Elisp")))

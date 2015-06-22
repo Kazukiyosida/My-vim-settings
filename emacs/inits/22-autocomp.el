@@ -60,12 +60,22 @@
 	    (add-to-list 'ac-sources
 			 'ac-source-symbols t)))
 ;; cモードではヘッダから補完
-(defun my:ac-c-headers-init ()
-  (require 'cl)
-  (require 'auto-complete-c-headers)
-  (add-to-list 'ac-sources 'ac-source-c-headers))
-(add-hook 'c-mode-hook
-	  (lambda ()
-	    (add-to-list 'ac-sources
-			 'ac-source-c-headers
-			 'ac-source-c-header-symbols t)))
+;; (defun my:ac-c-headers-init ()
+;;   (require 'cl)
+;;   (require 'auto-complete-c-headers)
+;;   (add-to-list 'ac-sources 'ac-source-c-headers))
+;; (add-hook 'c-mode-hook
+;; 	  (lambda ()
+;; 	    (add-to-list 'ac-sources
+;; 			 'ac-source-c-headers
+;; 			 'ac-source-c-header-symbols t)))
+(require 'processing-mode)
+(defun processing-mode-init ()
+  (make-local-variable 'ac-sources)
+  (setq ac-sources '(ac-source-dictionary ac-source-yasnippet))
+  (make-local-variable 'ac-user-dictionary)
+  (setq ac-user-dictionary (append processing-functions
+                                   processing-builtins
+                                   processing-constants)))
+(add-to-list 'ac-modes 'processing-mode)
+(add-hook 'processing-mode-hook 'processing-mode-init)

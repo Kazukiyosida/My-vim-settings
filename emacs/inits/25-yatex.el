@@ -20,6 +20,31 @@
 (add-hook 'yatex-mode-hook '(lambda () (setq mode name "ytex")))
 
 ;; pdf
+(require 'pdf-tools)
 (require 'autorevert)
-(add-hook 'pdf-view-mode-hook 'auto-revert-mode)
+(require 'migemo)
+(add-to-list 'auto-mode-alist '("\\.pdf$" . pdf-view-mode))
 (setq auto-revert-interval 1)
+(add-hook 'pdf-view-mode-hook 'auto-revert-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-isearch-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-sync-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-misc-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-annot-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-cache-prefetch-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-isearch-active-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-history-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-misc-context-menu-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-occur-dired-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-occur-ibuffer-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-isearch-batch-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-links-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-misc-menu-bar-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-misc-size-indication-minor-mode 	)
+(add-hook 'pdf-view-mode-hook 'pdf-occur-global-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-outline-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-view-auto-slice-minor-mode)
+(add-hook 'pdf-view-mode-hook 'pdf-view-printer-minor-mode)
+;; pdf-tools-enable-minor-modes
+;; pdf-view-dark-minor-mode
+;; pdf-view-midnight-minor-mode
+
