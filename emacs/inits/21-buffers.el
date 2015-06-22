@@ -28,6 +28,17 @@
 
 ;; Dired
 (require 'dired)
+;; カラーリング
+;; (require 'dired-k)
+;; (require 'stripe-buffer)
+;; (add-hook 'dired-mode-hook 'stripe-listify-buffer)
+;; (add-hook 'org-mode-hook 'turn-on-stripe-table-mode)
+;; (define-key dired-mode-map (kbd "g") 'dired-k)
+;; (add-hook 'dired-initial-position-hook 'dired-k)
+
+;; 非同期化
+(eval-after-load "dired-aux" '(require 'dired-async))
+
 ;; wdired
 (eval-after-load "dired"
   '(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode))
@@ -86,9 +97,9 @@
        (interactive "P")
        (let* ((fn-list (dired-get-marked-files nil arg)))
          (mapc 'view-file fn-list)))))
-;; dired filter
+;; /で正規表現で絞り込み
 (require 'dired-filter)
-;; dired subtree
+;; ディレクトリ展開
 (require 'dired-subtree)
 ;;; iを置き換え
 (define-key dired-mode-map (kbd "i") 'dired-subtree-insert)

@@ -124,6 +124,22 @@
     wgrep
 
     loccur
+
+    dired-toggle
+
+    dired-toggle-sudo
+
+    direx-k
+
+    stripe-buffer
+
+    direx
+
+    async
+
+    projector
+
+    ido-occasional
     
     ))
 

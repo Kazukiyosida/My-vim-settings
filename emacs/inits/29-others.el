@@ -25,14 +25,18 @@
 ;; undo,yank時にハイライト
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
-
+;; 複数シェル
 (require 'multi-eshell)
+;; bash_historyから取り込み
 (require 'shell-history)
+;; 画面分割しないoccur
 (require 'loccur)
 
+;; メッセージ抑制
 (require 'shut-up)
 (when noninteractive
   (shut-up-silence-emacs))
+
 
 ;; ido拡張
 (require 'smex)
@@ -58,9 +62,27 @@
 (setq ido-enable-flex-matching t)       ;あいまいマッチ
 (global-set-key (kbd "C-.") 'ido-imenu-anywhere)
 
+;; 外部コマンド実行をido化
+(require 'projector)
+(require 'ido-occasional)
+;;; M-!を置き換え。
+(global-set-key (kbd "M-!") 'projector-run-shell-command-current-directory/with-ido)
+;;; コマンドが正規表現にマッチしていれば自動でバックグラウンド実行になる
+(setq projector-always-background-regex '("^mysql.server\\.*" "^powder\\.*" "sleep"))
+;;; fix bug
+(defvaralias 'projector-command-history 'shell-command-history)
+(define-key minibuffer-local-completion-map " " nil)
+
+;; idoでdescribe-function
+(global-set-key (kbd "<f1> f") (with-ido-completion describe-function))
+;; idoでdescribe-variable
+(global-set-key (kbd "<f1> v") (with-ido-completion describe-variable))
+;;(global-set-key (kbd "<f2> i") (with-ido-completion info-lookup-symbol))
+
+
 (defvar flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
 (setq ido-enable-flex-matching t)
+
 
 ;; imenu-list
 (require 'imenu-list)
