@@ -1,0 +1,3 @@
+for vimrcs in split(glob('~/.vim/vimrcs/*.vim', '\n')
+    execute 'source ' . vimrcs
+endfor

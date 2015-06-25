@@ -1,7 +1,7 @@
 ;; skk
 (require 'skk)
 ;;(setq skk-isearch-mode-enable 'always)
-; isearchでskkのセットアップ
+; isearchでskkのセットアップ(migemoがあるのでいらない)
 ;; (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
 ;;; isearch で skk のクリーンアップ
 ;; (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup) 

@@ -1,20 +1,48 @@
 (require 'recentf)
 (require 'shut-up)
+(eval-when-compile
+   (require 'cl))
 ;; 最近のファイル3000個を保存
 (setq recentf-max-saved-items 3000)
 ;; 除外ファイル
-(setq recentf-exclude '("/TAGS$" "/var/tmp/" "/recentf$" "/\.bash_history$" "/\*daemon\*$"))
+(setq recentf-exclude '("/TAGS$" "/var/tmp/" "/recentf$" "/\.bash_history$" "/\\*daemon\\*$" "/session\..*" "/ido\.last$"))
+;; directoryも含むようにする
 (require 'recentf-ext)
+
+;; recentf-listに変更が無かったらautosave、cleanしない
+(defvar my-recentf-list-prev nil)
+(defadvice recentf-save-list
+    (around no-message activate)
+  "If `recentf-list' and previous recentf-list are equal,
+do nothing. And suppress the output from `message' and
+`write-file' to minibuffer."
+(unless (equal recentf-list my-recentf-list-prev)
+    (cl-flet ((message (format-string &rest args)
+		       (eval `(format ,format-string ,@args)))
+	      (write-file (file &optional confirm)
+			    (let ((str (buffer-string)))
+			      (with-temp-file file
+				(insert str))))))
+    ad-do-it
+    (setq my-recentf-list-prev recentf-list)))
+ 
+(defadvice recentf-cleanup
+  (around no-message activate)
+  "suppress the output from `message' to minibuffer"
+  (cl-flet ((message (format-string &rest args)
+		     (eval `(format ,format-string ,@args))))
+    ad-do-it))
+;; 10秒ごとに自動クリーン 
+(setq recentf-auto-cleanup 10)
 ;; 履歴ファイルの設定
 (setq recentf-save-file "~/.emacs.d/recentf")
-;; 1分ごとに自動クリーン
-(setq recentf-auto-cleanup nil)
 ;; 30秒放置でrecent保存
 (run-with-idle-timer 30 t 'recentf-save-list)
 (recentf-mode 1)
 
 
 
+;; recentf-open-filesをidoで
 (defun recentf-ido-find-files-and-dirs (arg)
   "Find a recent file and a directory using Ido."
   (interactive "P")

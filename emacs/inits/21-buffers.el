@@ -5,6 +5,10 @@
 ;; *で囲まれたファイルは無視する
 (setq uniquify-ignore-buffers-re "*[^*]+*")
 
+;; ibufferでido
+(require 'ibuffer)
+(define-key ibuffer-mode-map (kbd "C-x C-f") 'ido-find-file)
+
 ;; ibuffer-vc
 (require 'ibuffer-vc)
 ;;; リポジトリ順にする
@@ -43,11 +47,15 @@
 (eval-after-load "dired"
   '(define-key dired-mode-map "r" 'wdired-change-to-wdired-mode))
 ;; Dired file-unzip
-(eval-after-load "dired-aux"
-    '(progn
-     (require 'cl)
-   '(add-to-list 'dired-compress-file-suffixes 
-                 '("\\.zip\\'" ".zip" "unzip"))))
+;; (eval-after-load "dired-aux"
+;;     '(progn
+;;      (require 'cl)
+;;(add-to-list 'dired-compress-file-suffixes 
+;;	     '("\\.zip\\'" ".zip" "unzip"))))      '
+
+(add-to-list 'dired-compress-file-suffixes 
+	     '("\\.zip\\'" ".zip" "unzip"))
+
 ;; Dired file-zip
 (eval-after-load "dired"
   '(define-key dired-mode-map "z" 'dired-zip-files))

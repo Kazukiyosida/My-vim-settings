@@ -35,7 +35,7 @@
 ;; メッセージ抑制
 (require 'shut-up)
 (when noninteractive
-  (shut-up-silence-emacs))
+(shut-up-silence-emacs))
 
 
 ;; ido拡張
@@ -45,13 +45,13 @@
 (setq ido-max-window-height 1.0)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
+;; old M-x
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (defvar org-completion-use-ido t)
 (defvar magit-completing-read-function 'magit-ido-completing-read)
 (defvar ido-ubiquitous-mode 1)
-;;; skk使いはC-jをskk-modeにする
+;;; C-jをskk-modeにする
 (when (fboundp 'skk-mode)
   (fset 'ido-select-text 'skk-mode))
 ;; 候補選択を縦に
@@ -59,14 +59,14 @@
 ;; ido-anywhere
 (ido-vertical-mode 1)
 (setq ido-vertical-define-keys 'C-n-and-C-p-only)
-(setq ido-enable-flex-matching t)       ;あいまいマッチ
+(setq ido-enable-flex-matching t)
 (global-set-key (kbd "C-.") 'ido-imenu-anywhere)
 
 ;; 外部コマンド実行をido化
 (require 'projector)
 (require 'ido-occasional)
 ;;; M-!を置き換え。
-(global-set-key (kbd "M-!") 'projector-run-shell-command-current-directory/with-ido)
+(global-set-key (kbd "M-!") (with-ido-completion projector-run-shell-command-current-directory))
 ;;; コマンドが正規表現にマッチしていれば自動でバックグラウンド実行になる
 (setq projector-always-background-regex '("^mysql.server\\.*" "^powder\\.*" "sleep"))
 ;;; fix bug
@@ -77,14 +77,13 @@
 (global-set-key (kbd "<f1> f") (with-ido-completion describe-function))
 ;; idoでdescribe-variable
 (global-set-key (kbd "<f1> v") (with-ido-completion describe-variable))
-;;(global-set-key (kbd "<f2> i") (with-ido-completion info-lookup-symbol))
-
+(global-set-key (kbd "<f1> S") (with-ido-completion info-lookup-symbol))
 
 (defvar flx-ido-mode 1)
 (setq ido-enable-flex-matching t)
 
 
-;; imenu-list
+;; 関数名を右端に
 (require 'imenu-list)
 (global-set-key (kbd "C-'") #'imenu-list-minor-mode)
 (with-eval-after-load "imenu-list"
