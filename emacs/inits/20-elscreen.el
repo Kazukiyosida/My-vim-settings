@@ -1,5 +1,6 @@
 (require 'elscreen)
 (require 'elscreen-persist)
+(require 'ido-occasional)
 ;;; プレフィクスキーはC-z
 (setq elscreen-prefix-key (kbd "C-z"))
 (elscreen-start)

@@ -129,7 +129,7 @@
 
     dired-toggle-sudo
 
-    direx-k
+    dired-k
 
     stripe-buffer
 
@@ -140,6 +140,20 @@
     projector
 
     ido-occasional
+
+    processing-mode
+
+    processing-snippets
+
+    shut-up
+
+    ibuffer-vc
+
+    viewer
+
+    image-dired+
+
+    
     
     ))
 

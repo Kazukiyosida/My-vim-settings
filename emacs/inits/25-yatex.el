@@ -17,7 +17,8 @@
 (setq dviprint-command-format "dvipdfmx")
 ;; 自動で改行しない
 (add-hook 'yatex-mode-hook '(lambda () (auto-fill-mode -1)))
-(add-hook 'yatex-mode-hook '(lambda () (setq mode name "ytex")))
+(add-hook 'yatex-mode-hook '(lambda () (setq mode-name "ytex")))
+(add-hook 'yatex-mode-hook '(lambda () (setq-local compile-command "textopdf ")))
 
 ;; pdf
 (require 'pdf-tools)
@@ -44,7 +45,7 @@
 (add-hook 'pdf-view-mode-hook 'pdf-outline-minor-mode)
 (add-hook 'pdf-view-mode-hook 'pdf-view-auto-slice-minor-mode)
 (add-hook 'pdf-view-mode-hook 'pdf-view-printer-minor-mode)
-;; pdf-tools-enable-minor-modes
+(pdf-tools-enable-minor-modes 1)
 ;; pdf-view-dark-minor-mode
 ;; pdf-view-midnight-minor-mode
 
