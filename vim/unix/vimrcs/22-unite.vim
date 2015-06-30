@@ -13,7 +13,7 @@ nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
 nnoremap <silent> [unite]l :<C-u>Unite menu:Launcher<CR>
 nnoremap <silent> [unite]vr :UniteResume<CR>/"
 nnoremap <silent> [unite]o :<C-u>Unite outline<CR>
-nnoremap <silent> [unite]th :<C-u>Unite toho -direction=botright -prompt-direction=top -winheight=15<CR>
+nnoremap <silent> [unite]th :<C-u>Unite toho -direction=botright -prompt-direction=top -winheight=5<CR>
 nnoremap <silent> sf :<C-u>UniteWithBufferDir -direction=botright -prompt-direction=top -winheight=15 -buffer-name=files file<CR>
 nnoremap <silent> sb :<C-u>Unite -direction=botright -prompt-direction=top -winheight=15 buffer<CR>
 nnoremap <silent> sc :<C-u>Unite -buffer-name=register  -direction=botright -prompt-direction=top -winheight=15 register<CR>
@@ -27,16 +27,43 @@ autocmd vimrc FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " unite-comple
 imap <C-k> <Plug>(neocomplete_start_unite_complete)
 
+" unite-rss
+let g:unite_source_rss_url_dict = {
+        \ '暗黒美夢王の間' : 'http://vinarian.blogspot.jp/rss.xml',
+        \ 'Big Sky' : 'http://mattn.kaoriya.net/index.rss',
+        \ 'もぷろぐ' : 'http://ac-mopp.blogspot.jp/rss.xml',
+        \ }
+
+" unite-alias
+let g:unite_source_alias_aliases = {
+\   'Dropbox' : {
+\     'source': 'file_rec',
+\     'args': '~/Dropbox',
+\   },
+\   'Documents' : {
+\     'source': 'file_rec',
+\     'args': '~/Documents',
+\   },
+\   'dotfiles' : {
+\     'source': 'file_rec',
+\     'args': '~/workspace/dotfiles',
+\   },
+\   'Junk-Codes' : {
+\     'source': 'file_rec',
+\     'args': '~/.vim/junk',
+\   },
+\ }
+
 " :Unite menu
 let g:unite_source_menu_menus = {
 \   "Launcher" : {
 \       "description" : "unite-menu-launcher",
 \       "command_candidates" : [
-\           ["edit vimrc", "VimFiler ~/.vim/vimrcs"],
-\           ["edit gvimrc", "edit $MYGVIMRC"],
+\           ["Unite dotfiles", "Unite dotfiles"],
 \           ["Unite anything", "Unite buffer file file_mru"],
 \           ["Unite general", "Unite file_rec/async:~/"],
 \           ["Unite-file_mru", "Unite file_mru"],
+\           ["Unite-quickfix", "Unite quickfix"],
 \           ["Unite colorscheme", "Unite -auto-preview colorscheme"],
 \           ["Unite-output:message", "Unite output:message"],
 \       ],
@@ -61,6 +88,7 @@ if executable('cmigemo')
 	call unite#custom_source('register', 'matchers', "matcher_vigemo")
 	call unite#custom_source('toho', 'matchers', "matcher_vigemo")
 	call unite#custom_source('vim_hacks', 'matchers', "matcher_vigemo")
+	call unite#custom_source('rss', 'matchers', "matcher_vigemo")
 endif
 " 2文字入力した時から絞り込みを開始する
 let g:unite#filters#matcher_vigemo#filtering_input_length = 2
@@ -86,3 +114,4 @@ let g:unite_toho_config = [{
 \   'dirname'        : '/usr/local/bin/',
 \   'th_command'     : 'th143',
 \ }]
+

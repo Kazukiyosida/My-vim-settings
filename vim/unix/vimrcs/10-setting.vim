@@ -1,4 +1,7 @@
 " カラースキーム
+set t_Co=256
+set background=light
+let g:hybrid_use_Xresources = 1
 colorscheme hybrid
 " シンタックスハイライト
 syntax on
@@ -7,7 +10,9 @@ set hidden
 " アローキー左右で行をまたぐ
 set whichwrap+=<,>,[,]
 " 折りたたみ
+set foldenable
 set foldmethod=marker
+
 " UTF-8を使う {{{
 set fileencodings=utf-8,euc-jp,cp932,iso-2022-jp
 set fileformats=unix,dos,mac
@@ -28,7 +33,7 @@ set cmdheight=2
 " 不可視文字の表示
 set list
 set listchars=tab:>\ ,extends:<,trail:-,eol:<
-hi ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
 match ZenkakuSpace /　/
 " サーチ結果をハイライト
 set hlsearch
@@ -38,10 +43,19 @@ set concealcursor=i
 " }}}
 " autoindent
 set autoindent
+set smartindent
+" Smart insert tab setting.
+set smarttab
+" Exchange tab to spaces.
+set expandtab
 " tab幅４
 set tabstop=4
 " osのクリップボード有効化
-set clipboard+=unnamed
+if has('unnamedplus')
+  set clipboard& clipboard+=unnamedplus
+else
+  set clipboard& clipboard+=unnamed
+endif
 " インクリメンタルサーチ
 set incsearch
 set ignorecase
@@ -51,6 +65,15 @@ set wildmenu
 set showmatch
 
 set backup " {{{
+set backupdir=~/.vim/backup
+set swapfile
+set directory=~/.vim/backup
+set viminfo+=n~/.vim/backup/viminfo
+
+if !isdirectory(&backupdir)
+    call mkdir(&backupdir)
+endif
+
 if has('persistent_undo')
     set undodir=~/.vim/undo
     if !isdirectory(&undodir)
@@ -61,6 +84,9 @@ endif " }}}
 
 set history=10000
 set backspace=indent,eol,start
+
+" Enable virtualedit in visual block mode.
+set virtualedit=block
 
 " vimshellが使えなくなる
 " if exists('+autochdir')
@@ -100,3 +126,6 @@ nnoremap <silent> sP :<C-u>bprevious<CR>
 nnoremap <silent> st :<C-u>tabnew<CR>
 nnoremap <silent> sq :quit<CR>
 nnoremap <silent> sQ :quitall<CR>
+nnoremap <silent> <Esc> <Esc>
+inoremap <silent> <Esc> <Esc>
+
