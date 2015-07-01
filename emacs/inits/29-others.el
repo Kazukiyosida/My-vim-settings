@@ -78,7 +78,8 @@
 ;; idoでdescribe-variable
 (global-set-key (kbd "<f1> v") (with-ido-completion describe-variable))
 (global-set-key (kbd "<f1> S") (with-ido-completion info-lookup-symbol))
-
+(global-set-key (kbd "<f1> m") (with-ido-completion woman))
+		
 (defvar flx-ido-mode 1)
 (setq ido-enable-flex-matching t)
 
@@ -121,3 +122,13 @@
 (setq wgrep-auto-save-buffer t)
 ;;; read-only bufferにも変更を適用する
 (setq wgrep-change-readonly-file t)
+
+;; genericx
+(require 'generic-x)
+
+;; woman
+(require 'woman)
+;; 初回起動が遅いのでキャッシュを作成(更新は C-u を付けて woman を呼ぶ)
+(setq woman-cache-filename (expand-file-name "~/.emacs.d/woman_cache.el"))
+;; 新たにフレームは作らなくて良い
+(setq woman-use-own-frame nil)

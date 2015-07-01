@@ -68,7 +68,7 @@ set backup " {{{
 set backupdir=~/.vim/backup
 set swapfile
 set directory=~/.vim/backup
-set viminfo+=n~/.vim/backup/viminfo
+set viminfo& viminfo+=n~/.vim/backup/viminfo
 
 if !isdirectory(&backupdir)
     call mkdir(&backupdir)
