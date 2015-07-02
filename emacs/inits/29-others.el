@@ -8,7 +8,7 @@
 
 ;; 使い捨てファイルの設定
 (require 'open-junk-file)
-(setq open-junk-file-format "~/junk/%Y-%m/%d-%H%M%S.")
+(setq open-junk-file-format "~/junk/%Y-%m-%d-%H%M%S.")
 
 ;; 十字ハイライト
 (require 'crosshairs)
@@ -26,7 +26,10 @@
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
 ;; 複数シェル
-(require 'multi-eshell)
+;;(require 'multi-eshell)
+(require 'shell-pop)
+(setq shell-pop-shell-type '("eshell" "*eshell*" (lambda () (eshell shell-pop-term-shell))))
+(global-set-key (kbd "C-c s") 'shell-pop)
 ;; bash_historyから取り込み
 (require 'shell-history)
 ;; 画面分割しないoccur

@@ -10,20 +10,41 @@
                 (column-number-mode "C%c ")
                 (-3 . "%p")
 		vc-mode
-                " "
                 global-mode-string
                 " %[("
                 mode-name
                 mode-line-process
                 minor-mode-alist
-                "%n" ")%] "
-                (which-func-mode (" " which-func-format " "))
-                " ")
-              )
+                "%n" ")%]"))
 (setq mode-line-frame-identification " ")
 ;; モード名を短くする
-(setcar (cdr (assq 'abbrev-mode minor-mode-alist)) " Abb")
-(setcar (cdr (assq 'undo-tree-mode minor-mode-alist)) " UTr")
-(setcar (cdr (assq 'git-gutter-mode minor-mode-alist)) " Gg")
-;; (setcar (cdr (assq 'flymake-mode minor-mode-alist)) " Flym")
-(add-hook 'emacs-lisp-mode-hook '(lambda () (setq mode-name "Elisp")))
+(defvar mode-line-cleaner-alist
+  '( ;; For minor-mode, first char is 'space'
+    (yas-minor-mode . " Ys")
+    (paredit-mode . " Pe")
+    (eldoc-mode . "")
+    (abbrev-mode . "")
+    (undo-tree-mode . " Ut")
+    (elisp-slime-nav-mode . " EN")
+    (flymake-mode . " Fm")
+    (git-gutter-mode . " Gg")
+    ;; Major modes
+    (lisp-interaction-mode . "Li")
+    (python-mode . "Py")
+    (ruby-mode   . "Rb")
+    (emacs-lisp-mode . "El")
+    (markdown-mode . "Md")))
+
+(require 'cl-lib)
+(defun clean-mode-line ()
+  (interactive)
+  (cl-loop for (mode . mode-str) in mode-line-cleaner-alist
+        do
+        (let ((old-mode-str (cdr (assq mode minor-mode-alist))))
+          (when old-mode-str
+            (setcar old-mode-str mode-str))
+          ;; major mode
+          (when (eq mode major-mode)
+            (setq mode-name mode-str)))))
+
+(add-hook 'after-change-major-mode-hook 'clean-mode-line)

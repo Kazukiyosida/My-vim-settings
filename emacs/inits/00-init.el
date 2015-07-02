@@ -153,12 +153,12 @@
 
     image-dired+
 
-    
+    shell-pop
     
     ))
 
 ;; パッケージ確認、ない場合インストール
+(require 'package)
 (dolist (package my-packages)
-  (unless (require package nil t)
-    (package-refresh-contents)
+  (unless (package-installed-p package)
     (package-install package)))

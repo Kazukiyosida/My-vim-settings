@@ -50,7 +50,6 @@
 ;; 送り仮名が厳密に正しい候補を優先して表示
 (setq skk-henkan-strict-okuri-precedence t)
 ;; ヒント
-(defvar skk-hint-limit 10)
 (require 'skk-hint)
 
 ;; コード中では自動的に英字にする。
@@ -63,6 +62,6 @@
 
 ;; 言語
 ;; エラーを日本語に
-(setq skk-japanese-message-and-error t)
+(setq skk-japanese-message-and-error nil)
 ;; メニューを日本語に
-(setq skk-show-japanese-menu t)	
+(setq skk-show-japanese-menu nil)	

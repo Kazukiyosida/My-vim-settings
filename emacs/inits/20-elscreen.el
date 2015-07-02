@@ -1,6 +1,7 @@
+(require 'ido-occasional)
+(global-set-key (kbd "C-z b") (with-ido-completion elscreen-find-and-goto-by-buffer))
 (require 'elscreen)
 (require 'elscreen-persist)
-(require 'ido-occasional)
 ;;; プレフィクスキーはC-z
 (setq elscreen-prefix-key (kbd "C-z"))
 (elscreen-start)
@@ -37,10 +38,6 @@
 ;; elscreenごとにバッファを分ける
 (require 'elscreen-separate-buffer-list)
 (elscreen-separate-buffer-list-mode 1)
-;; ido!
-(define-key global-map (kbd "C-z b") (with-ido-completion elscreen-find-and-goto-by-buffer))
-
-
 ;; C-z C-c  新しいelscreenを作る
 ;; C-z C-k  現在のelscreenを削除する
 ;; C-z M-k  現在のelscreenをバッファごと削除する

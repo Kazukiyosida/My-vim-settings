@@ -51,7 +51,7 @@ let g:unite_source_alias_aliases = {
 \   },
 \   'Junk-Codes' : {
 \     'source': 'file_rec',
-\     'args': '~/.vim/junk',
+\     'args': '~/junk',
 \   },
 \ }
 

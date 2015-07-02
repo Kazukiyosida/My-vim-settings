@@ -32,6 +32,7 @@ NeoBundle 'Shougo/unite-sudo', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'mopp/unite-rss', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'osyo-manga/unite-quickfix', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'itchyny/unite-preview', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'ujihisa/unite-font', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'haya14busa/vim-migemo'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'modsound/gips-vim'
@@ -68,7 +69,6 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'autodate.vim'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'Wutzara/vim-materialtheme'
 "" NeoBundle 'choplin/unite-vim_hacks' {{{ 
 NeoBundle 'choplin/unite-vim_hacks', { 'depends' :
 						\['mattn/webapi-vim',
@@ -81,6 +81,7 @@ NeoBundleLazy 'sophacles/vim-processing' , {'autoload' : {'filename_patterns' : 
 " colorschemes
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'Wutzara/vim-materialtheme'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'vim-scripts/twilight'
 NeoBundle 'jonathanfilip/vim-lucius'

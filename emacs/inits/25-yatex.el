@@ -45,7 +45,6 @@
 (add-hook 'pdf-view-mode-hook 'pdf-outline-minor-mode)
 (add-hook 'pdf-view-mode-hook 'pdf-view-auto-slice-minor-mode)
 (add-hook 'pdf-view-mode-hook 'pdf-view-printer-minor-mode)
-(pdf-tools-enable-minor-modes 1)
 ;; pdf-view-dark-minor-mode
 ;; pdf-view-midnight-minor-mode
 
