@@ -128,4 +128,4 @@ nnoremap <silent> sq :quit<CR>
 nnoremap <silent> sQ :quitall<CR>
 nnoremap <silent> <Esc> <Esc>
 inoremap <silent> <Esc> <Esc>
-
+vnoremap <silent> <Esc> <Esc>

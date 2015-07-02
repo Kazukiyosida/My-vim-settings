@@ -7,7 +7,9 @@ if neobundle#is_installed('neocomplete')
     if !exists('g:neocomplete#keyword_patterns')
         let g:neocomplete#keyword_patterns = {}
     endif
+    let g:neocomplete#max_list = 10
     let g:neocomplete#keyword_patterns._ = '\h\w*'
+    inoremap <expr><C-h> pumvisible() ? neocomplete#close_popup() : "<CR>"
 elseif neobundle#is_installed('neocomplcache')
     " for neocomplcache
     let g:neocomplcache_enable_at_startup = 1
@@ -23,6 +25,7 @@ endif
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 " }}}
+
 
 " Neosnippet {{{
 " Plugin key-mappings.

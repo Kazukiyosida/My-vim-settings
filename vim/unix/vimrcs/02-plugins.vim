@@ -28,6 +28,10 @@ NeoBundle 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'tacroe/unite-alias', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'mattn/unite-remotefile', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'Shougo/unite-sudo', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'mopp/unite-rss', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'osyo-manga/unite-quickfix', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'itchyny/unite-preview', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'haya14busa/vim-migemo'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'modsound/gips-vim'
@@ -59,15 +63,12 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'kana/vim-smartchr'
 " NeoBundle 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'Shougo/unite-sudo'
-NeoBundle 'mopp/unite-rss'
-NeoBundle 'osyo-manga/unite-quickfix'
 NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'autodate.vim'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'itchyny/unite-preview'
+NeoBundle 'Wutzara/vim-materialtheme'
 "" NeoBundle 'choplin/unite-vim_hacks' {{{ 
 NeoBundle 'choplin/unite-vim_hacks', { 'depends' :
 						\['mattn/webapi-vim',

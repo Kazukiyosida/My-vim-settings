@@ -21,6 +21,7 @@ nnoremap <silent> sm :<C-u>Unite -direction=botright -prompt-direction=top -winh
 nnoremap <silent> sg :<C-u>Unite -direction=botright -prompt-direction=top -winheight=5 -no-start-insert menu:Git<CR>
 nnoremap <silent> su :<C-u>Unite -no-split -buffer-name=files buffer file file_mru<CR>
 nnoremap <silent> sx :<C-u>Unite -direction=botright -prompt-direction=top -winheight=15 command<CR>
+nnoremap <silent> q: :<C-u>Unite -direction=botright -prompt-direction=top -winheight=10 history/command<CR>
 autocmd vimrc FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 autocmd vimrc FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 
@@ -94,6 +95,7 @@ endif
 let g:unite#filters#matcher_vigemo#filtering_input_length = 2
 
 call unite#custom_source('command', 'matchers', "matcher_glob")
+call unite#custom_source('history/command', 'matchers', "matcher_glob")
 "" function removed.
 " call unite#custom_filters('file_mru',
 "       \ ['matcher_file_name', 'sorter_default', 'converter_file_directory'])
@@ -110,7 +112,7 @@ let g:unite_toho_config = [{
 \   'dirname'        : '/usr/local/bin/',
 \   'th_command'     : 'th14',
 \ }, {
-\   'title'          : 'th143  : 弾幕アマノジャク',
+\   'title'          : 'th143 : 弾幕アマノジャク',
 \   'dirname'        : '/usr/local/bin/',
 \   'th_command'     : 'th143',
 \ }]
