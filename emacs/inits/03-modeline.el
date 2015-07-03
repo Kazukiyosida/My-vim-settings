@@ -17,6 +17,7 @@
                 minor-mode-alist
                 "%n" ")%]"))
 (setq mode-line-frame-identification " ")
+
 ;; モード名を短くする
 (defvar mode-line-cleaner-alist
   '( ;; For minor-mode, first char is 'space'
@@ -29,6 +30,8 @@
     (flymake-mode . " Fm")
     (git-gutter-mode . " Gg")
     ;; Major modes
+    (fundamental-mode . "Fund")
+    (compilation-mode . "Comp")
     (lisp-interaction-mode . "Li")
     (python-mode . "Py")
     (ruby-mode   . "Rb")

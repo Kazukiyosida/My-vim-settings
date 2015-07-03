@@ -154,6 +154,22 @@
     image-dired+
 
     shell-pop
+
+    lispxmp
+
+    paredit
+
+    eldoc-extention
+
+    usage-memo
+
+    edit-list
+
+    ert-exprectations
+
+    el-mock
+
+    sudo-ext
     
     ))
 
