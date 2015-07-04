@@ -12,7 +12,8 @@ set whichwrap+=<,>,[,]
 " 折りたたみ
 set foldenable
 set foldmethod=marker
-
+" モード表示なし
+set noshowmode
 " UTF-8を使う {{{
 set fileencodings=utf-8,euc-jp,cp932,iso-2022-jp
 set fileformats=unix,dos,mac
@@ -126,7 +127,7 @@ nnoremap <silent> sP :<C-u>bprevious<CR>
 nnoremap <silent> st :<C-u>tabnew<CR>
 nnoremap <silent> sq :quit<CR>
 nnoremap <silent> sQ :quitall<CR>
-if has('unix') && has('gui_running')
+if has('unix') && !has('gui_running')
     inoremap <silent> <Esc> <Esc>
     vnoremap <silent> <Esc> <Esc>
 endif

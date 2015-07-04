@@ -18,24 +18,27 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundleLazy (has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'), { 'autoload' : {'insert' : '1'} }
 NeoBundleLazy 'Shougo/neosnippet',{ 'autoload' : {'insert' : '1'} }
 NeoBundleLazy 'Shougo/neosnippet-snippets', { 'autoload' : {'insert' : '1'} }
-NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vimshell.vim', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'Shougo/unite-outline', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'Shougo/vimfiler', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'Shougo/unite-sudo', { 'depends' : 'Shougo/unite.vim' }
+NeoBundle 'Shougo/neobundle-vim-recipes', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'basyura/unite-matchers', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'tsukkee/unite-help', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'tacroe/unite-alias', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'mattn/unite-remotefile', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'thinca/vim-unite-history', { 'depends' : 'Shougo/unite.vim' }
-NeoBundle 'Shougo/unite-sudo', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'mopp/unite-rss', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'osyo-manga/unite-quickfix', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'itchyny/unite-preview', { 'depends' : 'Shougo/unite.vim' }
 NeoBundle 'ujihisa/unite-font', { 'depends' : 'Shougo/unite.vim' }
-NeoBundle 'haya14busa/vim-migemo'
+NeoBundle 'Shougo/vinarise.vim'
+NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'modsound/gips-vim'
+NeoBundle 'haya14busa/vim-migemo'
 " NeoBundleLasy 'haya14busa/incsearch.vim'{{{
 NeoBundleLazy 'haya14busa/incsearch.vim' , {
 						\ 'autoload' : {
@@ -64,7 +67,6 @@ NeoBundle 'kannokanno/previm'
 NeoBundle 'kana/vim-smartchr'
 " NeoBundle 'bling/vim-airline'
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'Shougo/vinarise.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'autodate.vim'

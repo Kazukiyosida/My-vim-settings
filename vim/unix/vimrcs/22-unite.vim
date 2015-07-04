@@ -65,6 +65,7 @@ let g:unite_source_menu_menus = {
 \           ["Unite general", "Unite file_rec/async:~/"],
 \           ["Unite-file_mru", "Unite file_mru"],
 \           ["Unite-quickfix", "Unite quickfix"],
+\           ["Unite-plugins", "Unite neobundle/search"],
 \           ["Unite colorscheme", "Unite -auto-preview colorscheme"],
 \           ["Unite-output:message", "Unite output:message"],
 \       ],

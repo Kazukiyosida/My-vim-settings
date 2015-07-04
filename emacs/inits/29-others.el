@@ -34,6 +34,8 @@
 (require 'shell-history)
 ;; 画面分割しないoccur
 (require 'loccur)
+;; 折りたたみ
+(require 'fold-dwim)
 
 ;; メッセージ抑制
 (require 'shut-up)

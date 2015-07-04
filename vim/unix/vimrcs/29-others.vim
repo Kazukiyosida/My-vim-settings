@@ -49,13 +49,25 @@ let g:lightline = {
       \ 'colorscheme': 'jellybeans',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'filename' ] ]
+      \             [ 'fugitive', 'filename' ] ],
+      \   'right': [ [ 'syntastic', 'lineinfo' ],
+      \             [ 'percent' ],
+      \             [ 'skkstatus', 'fileformat', 'fileencoding', 'filetype' ]]
       \ },
       \ 'component_function': {
       \   'fugitive': 'MyFugitive',
       \   'readonly': 'MyReadonly',
       \   'modified': 'MyModified',
-      \   'filename': 'MyFilename'
+      \   'filename': 'MyFilename',
+      \   'skkstatus': 'MySkkgetmode',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype'
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag'
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error'
       \ },
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '|', 'right': '|' }
@@ -91,6 +103,19 @@ function! MyFilename()
   return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
        \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFileformat()
+  return winwidth('.') > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth('.') > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MySkkgetmode()
+  let _ = SkkGetModeStr()
+  return strlen(_) ? substitute(_, '\[\|\]', '', 'g') : ''
 endfunction
 
 "smartchr
@@ -129,7 +154,7 @@ let autodate_keyword_pre = 'Last \%(Change\|Modified\):'
 " Gundo.vim
 nnoremap U      :<C-u>GundoToggle<CR>
 
-" Open junk file."\{\{\{
+" Open junk file." {{{
 command! -nargs=0 JunkFile call s:open_junk_file()
 function! s:open_junk_file()
   let l:junk_dir = $HOME . '/junk'. strftime('/%Y/%m')
@@ -141,4 +166,4 @@ function! s:open_junk_file()
   if l:filename != ''
     execute 'edit ' . l:filename
   endif
-endfunction"\}\}\}
+endfunction "}}}
