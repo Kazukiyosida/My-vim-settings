@@ -28,4 +28,3 @@
 (defun shr-put-image-alt (spec alt &optional flags)
   (insert alt))
 
-(provide 'mylisp-eww-image)
