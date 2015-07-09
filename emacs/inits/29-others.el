@@ -34,8 +34,6 @@
 (require 'shell-history)
 ;; 画面分割しないoccur
 (require 'loccur)
-;; 折りたたみ
-(require 'fold-dwim)
 
 ;; メッセージ抑制
 (require 'shut-up)
@@ -137,3 +135,7 @@
 (setq woman-cache-filename (expand-file-name "~/.emacs.d/woman_cache.el"))
 ;; 新たにフレームは作らなくて良い
 (setq woman-use-own-frame nil)
+(setq ido-enable-flex-matching t)
+
+;; 折りたたみ
+(require 'fold-dwim)

@@ -1,0 +1,10 @@
+(defvar kmacro-save-file "~/.emacs.d/elisp/my-kmacro.el"
+  "キーマクロ保存ファイル")
+(setq kmacro-save-file "~/.emacs.d/elisp/my-kmacro.el") 
+(defun kmacro-save (symbol)
+  (interactive "SName of last kmacro: ")
+  (name-last-kbd-macro symbol)
+  (with-current-buffer (find-file-noselect kmacro-save-file)
+    (goto-char (point-max))
+    (insert-kbd-macro symbol)
+    (basic-save-buffer)))

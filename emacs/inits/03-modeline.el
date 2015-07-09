@@ -30,6 +30,7 @@
     (flymake-mode . " Fm")
     (git-gutter-mode . " Gg")
     ;; Major modes
+    (twittering-mode . "twit")
     (fundamental-mode . "Fund")
     (compilation-mode . "Comp")
     (lisp-interaction-mode . "Li")

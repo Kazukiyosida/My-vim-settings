@@ -168,7 +168,7 @@
 (require 'auto-save-buffers-enhanced)
 (setq auto-save-buffers-enhanced-include-regexps '(".+")) ;全ファイル
 ;; not-save-fileと.ignoreは除外する
-(setq auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$" "COMMIT_EDITMSG"))
+(setq auto-save-buffers-enhanced-exclude-regexps '("^not-save-file" "\\.ignore$" "/\\.git/"))
 ;;; Wroteのメッセージを抑制
 (setq auto-save-buffers-enhanced-quiet-save-p t)
 ;;; *scratch*も ~/.emacs.d/scratch に自動保存

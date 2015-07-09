@@ -7,6 +7,8 @@
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'ielm-mode-hook 'enable-paredit-mode)
+(define-key emacs-lisp-mode-map (kbd "C-c C-d") 'lispxmp)
+(global-set-key (kbd "C-m") 'newline-and-indent)
 
 ;; eldoc拡張
 (require 'eldoc-extension)

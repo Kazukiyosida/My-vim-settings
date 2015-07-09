@@ -8,17 +8,6 @@
 ;     (progn
 ;       (set-frame-parameter nil 'alpha 95)))
 
-;; font (よく分かんないので使わない)
-; (create-fontset-from-ascii-font
-;        "Source Han Code JP-14:weight=normal:slant=normal"
-;        nil "codekakugo")
-; (set-fontset-font "fontset-codekakugo"
-;                         'unicode
-;                         (font-spec :family "Source Han Code JP" :size 16) 
-;                         nil 
-;                         'append)
-; (add-to-list 'default-frame-alist '(font . "fontset-codekakugo"))
-
 ;; theme
 (setq custom-theme-directory "~/.emacs.d/themes/")
 (load-theme 'desert t)

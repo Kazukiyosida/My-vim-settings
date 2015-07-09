@@ -39,6 +39,7 @@ NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'modsound/gips-vim'
 NeoBundle 'haya14busa/vim-migemo'
+NeoBundle 'haya14busa/niconicomment.vim'
 " NeoBundleLasy 'haya14busa/incsearch.vim'{{{
 NeoBundleLazy 'haya14busa/incsearch.vim' , {
 						\ 'autoload' : {

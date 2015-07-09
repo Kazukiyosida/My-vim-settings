@@ -3,7 +3,7 @@
   (package-refresh-contents)
   (package-install 'auto-async-byte-compile))
 (require 'auto-async-byte-compile)
-(defvar auto-async-byte-comlile-exclude-files-regexp "/junk/")
+(setq auto-async-byte-compile-exclude-files-regexp "/junk/")
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 ;; インストールするパッケージのリスト
@@ -159,17 +159,19 @@
 
     paredit
 
-    eldoc-extention
+    eldoc-extension
 
     usage-memo
 
     edit-list
 
-    ert-exprectations
-
+    ert-expectations
+    
     el-mock
 
     sudo-ext
+
+    twittering-mode
     
     ))
 
