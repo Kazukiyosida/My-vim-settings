@@ -67,6 +67,7 @@
 
 ;; 外部コマンド実行をido化
 (require 'projector)
+(require 'projectile)
 (require 'ido-occasional)
 ;;; M-!を置き換え。
 (global-set-key (kbd "M-!") (with-ido-completion projector-run-shell-command-current-directory))
