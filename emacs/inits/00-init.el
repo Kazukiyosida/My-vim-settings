@@ -173,6 +173,22 @@
 
     twittering-mode
     
+    rainbow-delimiters
+
+    multiple-cursors
+
+    c-eldoc
+
+    cl-lib-highlight
+
+    package-utils
+
+    vimrc-mode
+
+    minimap
+
+    editorconfig
+    
     ))
 
 ;; パッケージ確認、ない場合インストール

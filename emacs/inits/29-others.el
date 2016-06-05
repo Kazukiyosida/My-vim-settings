@@ -35,6 +35,41 @@
 ;; 画面分割しないoccur
 (require 'loccur)
 
+;;()をあれする
+(require 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; 括弧の色を強調する設定
+(require 'cl-lib)
+(require 'color)
+(defun rainbow-delimiters-using-stronger-colors ()
+  (interactive)
+  (cl-loop
+   for index from 1 to rainbow-delimiters-max-face-count
+   do
+   (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+    (cl-callf color-saturate-name (face-foreground face) 30))))
+(add-hook 'emacs-startup-hook 'rainbow-delimiters-using-stronger-colors)
+
+;; multiple-cursors
+(require 'multiple-cursors)
+(defun mc/edit-lines-or-string-rectangle (s e)
+  "C-x r tで同じ桁の場合にmc/edit-lines (C-u M-x mc/mark-all-dwim)"
+  (interactive "r")
+  (if (eq (save-excursion (goto-char s) (current-column))
+          (save-excursion (goto-char e) (current-column)))
+      (call-interactively 'mc/edit-lines)
+    (call-interactively 'string-rectangle)))
+(global-set-key (kbd "C-x r t") 'mc/edit-lines-or-string-rectangle)
+
+(defun mc/mark-all-dwim-or-mark-sexp (arg)
+  "C-u C-M-SPCでmc/mark-all-dwim, C-u C-u C-M-SPCでC-u M-x mc/mark-all-dwim"
+  (interactive "p")
+  (cl-case arg
+    (16 (mc/mark-all-dwim t))
+    (4 (mc/mark-all-dwim nil))
+    (1 (mark-sexp 1))))
+(global-set-key (kbd "C-M-SPC") 'mc/mark-all-dwim-or-mark-sexp)
+
 ;; メッセージ抑制
 (require 'shut-up)
 (when noninteractive
@@ -83,7 +118,8 @@
 (global-set-key (kbd "<f1> v") (with-ido-completion describe-variable))
 (global-set-key (kbd "<f1> S") (with-ido-completion info-lookup-symbol))
 (global-set-key (kbd "<f1> m") (with-ido-completion woman))
-		
+(with-ido-completion describe-package)	; => describe-package/with-ido
+
 (defvar flx-ido-mode 1)
 (setq ido-enable-flex-matching t)
 
@@ -140,3 +176,12 @@
 
 ;; 折りたたみ
 (require 'fold-dwim)
+
+;; graphviz
+(require 'graphviz-dot-mode)
+
+(require 'foreign-regexp)
+
+(custom-set-variables
+ '(foreign-regexp/regexp-type 'perl) ;; Choose by your preference.
+ '(reb-re-syntax 'foreign-regexp)) ;; Tell re-builder to use foreign regexp.

@@ -16,6 +16,3 @@
 ;; M-x exitで終了
 (defalias 'exit 'save-buffers-kill-emacs)
 
-(remove-hook
-'kill-buffer-query-functions 
-'server-kill-buffer-query-function)

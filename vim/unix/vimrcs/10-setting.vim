@@ -1,8 +1,8 @@
 " カラースキーム
 set t_Co=256
 set background=light
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+" let g:hybrid_use_Xresources = 1
+colorscheme desert
 " シンタックスハイライト
 syntax on
 " 隠れバッファ有効化
@@ -27,13 +27,15 @@ setl fileformat=unix
 set number
 " 現在行をハイライト
 set cursorline
+" 列も
+set cursorcolumn
 " ステータス行の表示
 set laststatus=2
 " メッセージ欄の行数
-set cmdheight=2
+set cmdheight=1
 " 不可視文字の表示
 set list
-set listchars=tab:>\ ,extends:<,trail:-,eol:<
+set listchars=tab:>\ ,extends:<,trail:-
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=white
 match ZenkakuSpace /　/
 " サーチ結果をハイライト

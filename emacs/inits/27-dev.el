@@ -32,6 +32,9 @@
 (require 'el-mock)
 (require 'ert-expectations)
 
+;; cl-lib
+(require 'cl-lib-highlight)
+(cl-lib-highlight-initialize)
 
 
 

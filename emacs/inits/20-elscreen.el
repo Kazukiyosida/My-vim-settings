@@ -34,8 +34,8 @@
         ("dict" . "OnlineDict")
         ("*WL:Message*" . "Wanderlust")))
 ;; elscreenごとにバッファを分ける
-(require 'elscreen-separate-buffer-list)
-(elscreen-separate-buffer-list-mode 1)
+;; (require 'elscreen-separate-buffer-list)
+;; (elscreen-separate-buffer-list-mode 1)
 (require 'ido-occasional)
 (global-set-key (kbd "C-z b") (with-ido-completion elscreen-find-and-goto-by-buffer))
 ;; C-z C-c  新しいelscreenを作る

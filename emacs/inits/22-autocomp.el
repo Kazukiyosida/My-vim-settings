@@ -33,6 +33,11 @@
 ;; auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)
+(ac-config-default)
+(setq ac-dictionary-directories '(
+				  "~/.emacs.d/elpa/auto-complete-20150408.1132/dict"
+				  
+				  ))
 (global-auto-complete-mode t)
 ;; 10個まで補完候補表示
 (setq ac-limit 10)
@@ -50,8 +55,8 @@
 ;; 0.05秒後に補完メニュー表示
 (setq ac-auto-show-menu 0.05)
 ;; 同一モードのバッファとファイル名を補完候補に
-(setq-default ac-sources '( ac-source-words-in-same-mode-buffers
-			    ac-source-filename
+(setq-default ac-sources '( ac-source-filename
+			    ac-source-words-in-same-mode-buffers
 			    ac-source-yasnippet
 			    ))
 ;; Emacs Lispモードではac-source-symbolsを追加で利用
@@ -61,14 +66,13 @@
 			 'ac-source-symbols t)))
 ;; cモードではヘッダから補完
 ;; (defun my:ac-c-headers-init ()
-;;   (require 'cl)
 ;;   (require 'auto-complete-c-headers)
 ;;   (add-to-list 'ac-sources 'ac-source-c-headers))
-;; (add-hook 'c-mode-hook
-;; 	  (lambda ()
-;; 	    (add-to-list 'ac-sources
-;; 			 'ac-source-c-headers
-;; 			 'ac-source-c-header-symbols t)))
+(require 'auto-complete-c-headers)
+(add-hook 'c-mode-hook
+	  (lambda ()
+	    (add-to-list 'ac-sources
+			 'ac-source-c-headers t)))
 (require 'processing-mode)
 (defun processing-mode-init ()
   (make-local-variable 'ac-sources)
